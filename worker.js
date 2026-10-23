@@ -86,7 +86,7 @@ export default {
       if (cachedData) {
         return jsonResponse({ ...cachedData, cached: true, stale: true });
       }
-      return jsonResponse({ error: "upstream_unavailable" }, 502);
+      return jsonResponse({ error: e }, 502);
     }
   },
 };
