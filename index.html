@@ -645,80 +645,6 @@
                 fill: currentColor;
             }
 
-            .reel-grid {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1.4rem;
-                margin-top: 2.4rem;
-            }
-            .reel-card {
-                position: relative;
-                display: block;
-                overflow: hidden;
-                border-radius: var(--radius-lg);
-                aspect-ratio: 4/5;
-                background: var(--green-800);
-                text-decoration: none;
-            }
-            .reel-card img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            }
-            .reel-card:hover img {
-                transform: scale(1.06);
-            }
-            .reel-play {
-                position: absolute;
-                inset: 0;
-                display: grid;
-                place-items: center;
-                background: linear-gradient(
-                    180deg,
-                    rgba(23, 60, 34, 0) 45%,
-                    rgba(23, 60, 34, 0.55) 100%
-                );
-            }
-            .reel-play b {
-                width: 68px;
-                height: 68px;
-                display: grid;
-                place-items: center;
-                border-radius: 50%;
-                background: rgba(255, 255, 255, 0.92);
-                transition:
-                    background 0.18s,
-                    transform 0.18s;
-            }
-            .reel-play b svg {
-                width: 30px;
-                height: 30px;
-                fill: var(--green-800);
-                margin-left: 4px;
-            }
-            .reel-card:hover .reel-play b {
-                background: var(--lime);
-                transform: scale(1.1);
-            }
-            .reel-load {
-                grid-column: 1 / -1;
-                background: #fff;
-                border-radius: var(--radius-lg);
-                padding: 2.4rem;
-                text-align: center;
-                color: var(--ink-soft);
-                font-weight: 500;
-            }
-            .reel-load a {
-                color: var(--green-800);
-                font-weight: 600;
-                text-decoration: none;
-            }
-            .reel-load a:hover {
-                text-decoration: underline;
-            }
-
             .contact-panel {
                 background: var(--green-900);
                 color: #fff;
@@ -968,17 +894,8 @@
                 .contact-panel {
                     grid-template-columns: 1fr;
                 }
-                .story-grid,
-                .reel-grid {
+                .story-grid {
                     grid-template-columns: 1fr 1fr;
-                }
-                .reel-play b {
-                    width: 56px;
-                    height: 56px;
-                }
-                .reel-play b svg {
-                    width: 24px;
-                    height: 24px;
                 }
                 .story-card:last-child {
                     grid-column: span 2;
@@ -1081,18 +998,6 @@
                 .story-grid {
                     grid-template-columns: 1fr;
                 }
-                .reel-grid {
-                    grid-template-columns: 1fr 1fr;
-                    gap: 0.8rem;
-                }
-                .reel-play b {
-                    width: 44px;
-                    height: 44px;
-                }
-                .reel-play b svg {
-                    width: 20px;
-                    height: 20px;
-                }
                 .story-card:last-child {
                     grid-column: auto;
                 }
@@ -1149,7 +1054,7 @@
                 ></label>
                 <nav class="site-nav">
                     <a href="#about">About</a>
-                    <a href="#why">Why Nawaia</a>
+                    <a href="#why">Why Nuwaia</a>
                     <a href="#services">Services</a>
                     <a href="#products">Products</a>
                     <a href="#next">Next Steps</a>
@@ -1173,7 +1078,7 @@
                     <div>
                         <h1>From waste to great opportunity.</h1>
                         <p>
-                            Nawaia is a university-based environmental startup
+                            Nuwaia is a university-based environmental startup
                             founded within Al-Bayan University. We transform
                             research ideas into real, eco-friendly products and
                             sustainable solutions, combining science, innovation
@@ -1242,7 +1147,7 @@
                             <span>Our Concept</span>
                             <h3>A startup, not just a lab</h3>
                             <p>
-                                Nawaia is not just an environmental lab, but a
+                                Nuwaia is not just an environmental lab, but a
                                 productive startup that connects science,
                                 innovation and the market &mdash; turning
                                 academic knowledge into real products and green
@@ -1250,7 +1155,7 @@
                             </p>
                         </div>
                         <div class="why-block">
-                            <span>Why Nawaia</span>
+                            <span>Why Nuwaia</span>
                             <h3>Tomorrow begins at university</h3>
                             <p>
                                 University students transform their majors into
@@ -1263,7 +1168,7 @@
                     <figure class="why-figure">
                         <img
                             src="assets/why.jpg"
-                            alt="Young recyclers working with Nawaia"
+                            alt="Young recyclers working with Nuwaia"
                         />
                     </figure>
                 </div>
@@ -1271,7 +1176,7 @@
                     <div class="how-row">
                         <img
                             src="assets/labjpg.jpg"
-                            alt="Equipment inside the Nawaia environmental lab"
+                            alt="Equipment inside the Nuwaia environmental lab"
                         />
                         <div>
                             <span>How We Work</span>
@@ -1410,7 +1315,7 @@
                             />
                             <h3>Solid Organic Fertilizers</h3>
                             <p>
-                                Nawaia produces two types of environmentally
+                                Nuwaia produces two types of environmentally
                                 friendly solid fertilizers: Organic Compost and
                                 Vermicompost.
                             </p>
@@ -1465,7 +1370,7 @@
                             Experts and certified trainers
                         </h2>
                         <p>
-                            The Nawaia team includes experts in environment,
+                            The Nuwaia team includes experts in environment,
                             recycling and sustainable management, as well as
                             certified trainers in green entrepreneurship with
                             both local and international experience.
@@ -1480,7 +1385,7 @@
             <section class="steps" id="next">
                 <div class="wrap steps-inner">
                     <span>Our Next Step</span>
-                    <h2 class="section-title">Where Nawaia is heading</h2>
+                    <h2 class="section-title">Where Nuwaia is heading</h2>
                     <ol class="steps-list">
                         <li class="step">
                             <span class="step-num">
@@ -1536,7 +1441,7 @@
                             max-width: 40rem;
                         "
                     >
-                        Nawaia aims to expand towards smart environmental
+                        Nuwaia aims to expand towards smart environmental
                         transformation through a series of innovative
                         initiatives that combine technology, sustainability and
                         youth empowerment.
@@ -1552,9 +1457,9 @@
                                 <b>1</b>
                             </span>
                             <div>
-                                <h3>Nawaia Smart App</h3>
+                                <h3>Nuwaia Smart App</h3>
                                 <p>
-                                    Launching the Nawaia Smart App for waste
+                                    Launching the Nuwaia Smart App for waste
                                     sorting and collection, encouraging
                                     community participation in recycling.
                                 </p>
@@ -1689,17 +1594,6 @@
                                 </span>
                             </span>
                         </a>
-                    </div>
-                </div>
-            </section>
-            <section class="reels" id="reels">
-                <div class="wrap">
-                    <span>Instagram</span>
-                    <h2 class="section-title">Reels from the field</h2>
-                    <div class="reel-grid" id="reel-grid">
-                        <div class="reel-load" id="reel-load">
-                            Loading the latest reels from Instagram&hellip;
-                        </div>
                     </div>
                 </div>
             </section>
@@ -1884,103 +1778,7 @@
                         io.observe(s);
                     });
                 }
-            })();
-            (function () {
-                var grid = document.getElementById("reel-grid");
-                var msg = document.getElementById("reel-load");
-                var username = "nawaia2025";
-                var reelsUrl = "https://reels.nuwaiaproject.com/reels";
-                function showFallback() {
-                    msg.innerHTML =
-                        'Error. <a href="https://www.instagram.com/' +
-                        username +
-                        '" target="_blank" rel="noopener">Watch them on Instagram</a>.';
-                }
-                function buildCard(node) {
-                    var a = document.createElement("a");
-                    a.className = "reel-card";
-                    a.href =
-                        "https://www.instagram.com/reel/" +
-                        node.shortcode +
-                        "/";
-                    a.target = "_blank";
-                    a.rel = "noopener";
-                    a.setAttribute("aria-label", "Watch reel on Instagram");
-                    var img = document.createElement("img");
-                    img.loading = "lazy";
-                    img.src = node.thumbnail_src || node.display_url;
-                    img.alt = "Instagram reel by Nawaia";
-                    var play = document.createElement("span");
-                    play.className = "reel-play";
-                    play.innerHTML =
-                        '<b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></b>';
-                    a.appendChild(img);
-                    a.appendChild(play);
-                    return a;
-                }
-                if (!("fetch" in window)) {
-                    showFallback();
-                    return;
-                }
-                fetch(reelsUrl)
-                    .then(function (res) {
-                        if (!res.ok) throw new Error(res.status);
-                        return res.json();
-                    })
-                    .then(function (data) {
-                        var user =
-                            (data && data.user) ||
-                            (data && data.data && data.data.user);
-                        var edges = [];
-                        if (
-                            user &&
-                            user.edge_felix_video_timeline &&
-                            user.edge_felix_video_timeline.edges
-                        )
-                            edges = edges.concat(
-                                user.edge_felix_video_timeline.edges,
-                            );
-                        if (
-                            user &&
-                            user.edge_owner_to_timeline_media &&
-                            user.edge_owner_to_timeline_media.edges
-                        )
-                            user.edge_owner_to_timeline_media.edges.forEach(
-                                function (e) {
-                                    if (e.node && e.node.is_video)
-                                        edges.push(e);
-                                },
-                            );
-                        var seen = {};
-                        var reels = edges
-                            .map(function (e) {
-                                return e.node;
-                            })
-                            .filter(function (n) {
-                                if (
-                                    !n ||
-                                    !(n.is_video || n.video_url) ||
-                                    !n.shortcode ||
-                                    seen[n.shortcode]
-                                )
-                                    return false;
-                                seen[n.shortcode] = true;
-                                return true;
-                            })
-                            .slice(0, 6);
-                        if (!reels.length) {
-                            showFallback();
-                            return;
-                        }
-                        grid.removeChild(msg);
-                        reels.forEach(function (n) {
-                            grid.appendChild(buildCard(n));
-                        });
-                    })
-                    .catch(function () {
-                        showFallback();
-                    });
-            })();
+             })();
         </script>
         <footer class="site-foot">
             <div class="wrap foot-grid">
@@ -2036,12 +1834,11 @@
                 <nav class="foot-col" aria-label="Footer">
                     <h4>Explore</h4>
                     <a href="#about">About</a>
-                    <a href="#why">Why Nawaia</a>
+                    <a href="#why">Why Nuwaia</a>
                     <a href="#services">Services</a>
                     <a href="#products">Products</a>
                     <a href="#next">Next Steps</a>
                     <a href="#stories">Stories</a>
-                    <a href="#reels">Reels</a>
                 </nav>
                 <div class="foot-col">
                     <h4>Contact</h4>
