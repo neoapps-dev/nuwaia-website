@@ -1,4 +1,1899 @@
-<!DOCTYPE HTML>
-<html>
-  <h1>Test</h1>
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Nuwaia</title>
+        <meta
+            name="description"
+            content="Nuwaia is a university-based environmental startup at Al-Bayan University, Baghdad. Green innovation, recycling, organic compost and eco-friendly products made by young Iraqi talents."
+        />
+        <meta property="og:title" content="Nuwaia" />
+        <meta
+            property="og:description"
+            content="A university-based environmental startup turning research ideas into real, eco-friendly products."
+        />
+        <link rel="icon" type="image/jpeg" href="assets/Logo.jpg" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                /*neo: i know those are weird color choices but they look pretty cool */
+                --green-950: #173c22;
+                --green-900: #1e4d2b;
+                --green-800: #2e6c39;
+                --green-700: #3b7f49;
+                --green-600: #4a9a58;
+                --lime: #d3f28a;
+                --lime-soft: #cdeb9a;
+                --cream: #f6faf0;
+                --cream-2: #eef6e3;
+                --ink: #22402a;
+                --ink-soft: #3d5c44;
+                --hero-a: #86cf6e;
+                --hero-b: #d9f0c3;
+                --card-a: #eef8e0;
+                --card-b: #9fd489;
+                --radius-lg: 28px;
+                --radius-md: 20px;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            html {
+                scroll-behavior: smooth;
+                scroll-snap-type: y proximity;
+                scroll-padding-top: 9.5rem;
+            }
+            body {
+                font-family: "Quicksand", sans-serif;
+                color: var(--ink);
+                background: var(--cream);
+                line-height: 1.6;
+                -webkit-font-smoothing: antialiased;
+            }
+            img {
+                display: block;
+                max-width: 100%;
+            }
+            a {
+                color: inherit;
+            }
+            h1,
+            h2,
+            h3,
+            h4 {
+                font-family: "Fredoka", sans-serif;
+                font-weight: 600;
+                line-height: 1.12;
+                letter-spacing: -0.01em;
+            }
+            .wrap {
+                width: min(1120px, 92%);
+                margin-inline: auto;
+            }
+            section {
+                padding: clamp(3.5rem, 9vw, 6.5rem) 0;
+                scroll-snap-align: start;
+            }
+            :focus-visible {
+                outline: 3px solid var(--green-600);
+                outline-offset: 3px;
+                border-radius: 6px;
+            }
+
+            .site-head {
+                position: fixed;
+                inset: 0 0 auto 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 1rem 0 1.4rem;
+                z-index: 50;
+                pointer-events: none;
+            }
+            .head-in {
+                pointer-events: auto;
+                display: flex;
+                align-items: center;
+                gap: 1.2rem;
+                padding: 0.45rem 1.1rem;
+                position: relative;
+                background: rgba(246, 250, 240, 0.55);
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                border: 1px solid rgba(46, 108, 57, 0.18);
+                border-radius: 999px;
+                width: var(--nav-w, max-content);
+                max-width: 94vw;
+                transition:
+                    width 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                    padding 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                    background 0.45s ease,
+                    box-shadow 0.45s ease,
+                    gap 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+                will-change: width;
+            }
+            .site-head.scrolled .head-in {
+                width: min(1120px, 92vw);
+                padding: 0.45rem 1.6rem;
+                background: rgba(246, 250, 240, 0.8);
+                box-shadow: 0 12px 32px rgba(23, 60, 34, 0.16);
+            }
+            .brand {
+                display: flex;
+                align-items: center;
+                gap: 0.7rem;
+                text-decoration: none;
+            }
+            .brand-mark {
+                width: 92px;
+                height: 92px;
+                object-fit: cover;
+            }
+            .site-nav {
+                margin-left: auto;
+                display: flex;
+                align-items: center;
+                gap: 1.6rem;
+            }
+            .site-nav a {
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 0.95rem;
+                color: var(--ink-soft);
+                transition: color 0.18s;
+            }
+            .site-nav a:hover {
+                color: var(--green-800);
+            }
+            .nav-cta {
+                background: var(--green-800);
+                color: #fff !important;
+                padding: 0.55em 1.25em;
+                border-radius: 999px;
+                font-family: "Fredoka", sans-serif;
+                font-weight: 500;
+                font-size: 1.1rem !important;
+            }
+            .nav-cta:hover {
+                background: var(--green-900);
+            }
+            #navtoggle,
+            #navtoggle-label {
+                display: none;
+            }
+            .hero {
+                background: linear-gradient(
+                    175deg,
+                    var(--hero-a) 0%,
+                    #a5dc8b 46%,
+                    var(--hero-b) 100%
+                );
+                padding: calc(
+                        clamp(2.5rem, 6vw, 4.5rem) + clamp(3.5rem, 8vw, 6rem)
+                    )
+                    0 clamp(3rem, 7vw, 5rem);
+                overflow: hidden;
+                position: relative;
+            }
+            .hero::after {
+                content: "";
+                position: absolute;
+                top: -40px;
+                right: -40px;
+                width: 300px;
+                height: 300px;
+                background-size: 14px 14px;
+                opacity: 0.5;
+                pointer-events: none;
+            }
+            .about {
+                padding: clamp(3.5rem, 8vw, 6rem) 0 clamp(3rem, 7vw, 5rem);
+                overflow: hidden;
+                position: relative;
+            }
+            .about::after {
+                content: "";
+                position: absolute;
+                top: -40px;
+                right: -40px;
+                width: 300px;
+                height: 300px;
+                background-size: 14px 14px;
+                opacity: 0.5;
+                pointer-events: none;
+            }
+            .hero-grid {
+                display: grid;
+                grid-template-columns: 1.15fr 0.85fr;
+                gap: clamp(2rem, 5vw, 4rem);
+                align-items: center;
+                position: relative;
+                z-index: 1;
+            }
+            .hero h1 {
+                font-size: clamp(2.6rem, 6.5vw, 4.6rem);
+                color: var(--green-950);
+                margin: 0.45rem 0 1rem;
+                font-weight: 700;
+            }
+            .hero p {
+                max-width: 34rem;
+                color: var(--ink);
+                font-size: 1.05rem;
+                font-weight: 500;
+            }
+            .hero-actions {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.8rem;
+                margin-top: 1.8rem;
+            }
+            .btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.55em;
+                font-family: "Fredoka", sans-serif;
+                font-weight: 500;
+                font-size: 1.5rem;
+                text-decoration: none;
+                padding: 0.7em 1.5em;
+                border-radius: 999px;
+                transition: background 0.15s;
+            }
+            .btn svg {
+                width: 1.1em;
+                height: 1.1em;
+                fill: currentColor;
+            }
+            .btn-dark {
+                background: var(--green-900);
+                color: #fff;
+            }
+            .btn-dark:hover {
+                background: var(--green-950);
+            }
+            .btn-ghost {
+                background: rgba(255, 255, 255, 0.75);
+                color: var(--green-900);
+            }
+            .btn-ghost:hover {
+                background: #fff;
+            }
+            .hero-figure {
+                position: relative;
+            }
+            .hero-figure img {
+                width: 100%;
+                border-radius: var(--radius-lg);
+                object-fit: cover;
+                aspect-ratio: 4/3.4;
+            }
+            .hero-figure::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                border-radius: var(--radius-lg);
+                opacity: 0.28;
+                pointer-events: none;
+            }
+
+            .about-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.4rem;
+                margin-top: 2.4rem;
+            }
+            .ab-card {
+                background: var(--green-800);
+                border-radius: var(--radius-lg);
+                padding: 1.9rem;
+                color: #fff;
+            }
+            .ab-card img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+                border-radius: 14px;
+                margin-bottom: 1.2rem;
+            }
+            .ab-card h3 {
+                color: var(--lime);
+                font-size: 1.45rem;
+                margin-bottom: 0.6rem;
+            }
+            .ab-card p {
+                color: rgba(255, 255, 255, 0.88);
+                font-weight: 500;
+            }
+
+            .why-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: clamp(2.5rem, 6vw, 5rem);
+                align-items: center;
+            }
+            .why h2,
+            .section-title {
+                font-size: clamp(2rem, 4.5vw, 3.1rem);
+                color: var(--green-900);
+                margin: 0.6rem 0 1.2rem;
+            }
+            .why p {
+                color: var(--ink-soft);
+                max-width: 32rem;
+                font-weight: 500;
+            }
+            .why-block + .why-block {
+                margin-top: 2rem;
+            }
+            .why-block h3 {
+                color: var(--green-800);
+                font-size: 1.35rem;
+                margin-bottom: 0.4rem;
+            }
+            .why-figure {
+                display: grid;
+                gap: 1.2rem;
+            }
+            .why-figure img {
+                width: 100%;
+                border-radius: var(--radius-lg) var(--radius-lg)
+                    var(--radius-lg) 0;
+                object-fit: cover;
+            }
+            .why-figure img:first-child {
+                aspect-ratio: 4/3.2;
+            }
+            .why-figure img:last-child {
+                border-radius: 0 var(--radius-lg) var(--radius-lg)
+                    var(--radius-lg);
+                aspect-ratio: 4/2.6;
+            }
+            .how-row {
+                display: grid;
+                grid-template-columns: 0.9fr 1.1fr;
+                gap: clamp(2rem, 5vw, 3.5rem);
+                align-items: center;
+                margin-top: clamp(3rem, 7vw, 5rem);
+            }
+            .how-row img {
+                width: 100%;
+                border-radius: var(--radius-lg);
+                object-fit: cover;
+                aspect-ratio: 4/3.2;
+            }
+            .how-row h2 {
+                font-size: clamp(1.8rem, 3.8vw, 2.6rem);
+                margin: 0.6rem 0 1.4rem;
+            }
+            .how-list {
+                list-style: none;
+                display: grid;
+                gap: 1.1rem;
+                counter-reset: how;
+            }
+            .how-list li {
+                counter-increment: how;
+                display: grid;
+                grid-template-columns: auto 1fr;
+                gap: 1rem;
+                align-items: flex-start;
+                font-weight: 500;
+                color: var(--ink-soft);
+            }
+            .how-list li::before {
+                content: counter(how);
+                font-family: "Fredoka", sans-serif;
+                font-weight: 600;
+                width: 2.2rem;
+                height: 2.2rem;
+                flex: none;
+                display: grid;
+                place-items: center;
+                background: var(--green-800);
+                color: var(--lime);
+                border-radius: 50%;
+                font-size: 1rem;
+            }
+            .how-list li strong {
+                color: var(--green-900);
+            }
+
+            .services {
+                background: var(--green-800);
+            }
+            .services .section-title {
+                color: #fff;
+            }
+            .services-lead {
+                color: rgba(255, 255, 255, 0.85);
+                max-width: 36rem;
+                font-weight: 500;
+            }
+            .svc-featured {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.4rem;
+                margin-top: 2.6rem;
+            }
+            .svc-card {
+                background: linear-gradient(
+                    180deg,
+                    var(--card-a) 0%,
+                    var(--card-b) 130%
+                );
+                border-radius: var(--radius-lg);
+                padding: 2.1rem 2rem;
+            }
+            .svc-card img {
+                width: 100%;
+                height: 210px;
+                object-fit: cover;
+                border-radius: 16px;
+                margin-bottom: 1.3rem;
+            }
+            .svc-card h3 {
+                font-size: 1.5rem;
+                color: var(--green-900);
+                margin-bottom: 0.6rem;
+            }
+            .svc-card p {
+                color: var(--ink-soft);
+                font-weight: 500;
+            }
+            .svc-rows {
+                margin-top: 2.6rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.25);
+            }
+            .svc-row {
+                display: grid;
+                grid-template-columns: 16rem 1fr;
+                gap: 1rem 2.5rem;
+                align-items: baseline;
+                padding: 1.4rem 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+            }
+            .svc-row h3 {
+                color: var(--lime);
+                font-size: 1.25rem;
+            }
+            .svc-row p {
+                color: rgba(255, 255, 255, 0.88);
+                font-weight: 500;
+            }
+
+            .prod-grid {
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                gap: 1.4rem;
+                margin-top: 2.4rem;
+            }
+            .prod-card {
+                background: var(--green-800);
+                border-radius: var(--radius-lg);
+                padding: 1.9rem;
+                color: #fff;
+                display: flex;
+                flex-direction: column;
+            }
+            .prod-card h3 {
+                color: var(--lime);
+                font-size: 1.4rem;
+                margin-bottom: 0.6rem;
+            }
+            .prod-card p {
+                color: rgba(255, 255, 255, 0.88);
+                font-weight: 500;
+            }
+            .prod-card img {
+                width: 100%;
+                height: 180px;
+                object-fit: cover;
+                border-radius: 14px;
+                margin-bottom: 1.2rem;
+            }
+            .prod-card.span6 {
+                grid-column: span 6;
+            }
+            .prod-card.span4 {
+                grid-column: span 4;
+            }
+
+            .team {
+                background: var(--cream-2);
+            }
+            .team-grid {
+                display: grid;
+                grid-template-columns: 0.8fr 1.2fr;
+                gap: clamp(2.5rem, 6vw, 5rem);
+                align-items: center;
+            }
+            .team-grid img {
+                width: 100%;
+                border-radius: var(--radius-lg);
+                object-fit: cover;
+                aspect-ratio: 1/1.05;
+            }
+            .team-grid p {
+                color: var(--ink-soft);
+                max-width: 34rem;
+                font-weight: 500;
+            }
+
+            .steps {
+                background: linear-gradient(
+                    180deg,
+                    var(--hero-b) 0%,
+                    #cbe8b4 100%
+                );
+            }
+            .steps-inner {
+                max-width: 840px;
+            }
+            .steps-list {
+                list-style: none;
+                margin-top: 2.4rem;
+                display: grid;
+                gap: 1.8rem;
+            }
+            .step {
+                display: grid;
+                grid-template-columns: auto 1fr;
+                gap: 1.6rem;
+                align-items: center;
+            }
+            .step-num {
+                position: relative;
+                width: 74px;
+                height: 74px;
+                flex: none;
+                display: grid;
+                place-items: center;
+            }
+            .step-num svg {
+                position: absolute;
+                inset: 0;
+                fill: var(--lime-soft);
+            }
+            .step-num b {
+                position: relative;
+                font-family: "Fredoka", sans-serif;
+                font-size: 1.7rem;
+                font-weight: 600;
+                color: var(--green-900);
+            }
+            .step h3 {
+                font-size: 1.45rem;
+                color: var(--green-900);
+            }
+            .step p {
+                color: var(--ink-soft);
+                font-weight: 500;
+                max-width: 34rem;
+            }
+            .seed-line {
+                margin-top: 3.5rem;
+                font-family: "Fredoka", sans-serif;
+                font-weight: 700;
+                font-size: clamp(2.2rem, 6vw, 4rem);
+                color: var(--green-800);
+                line-height: 1.05;
+                max-width: 14ch;
+            }
+
+            .story-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.4rem;
+                margin-top: 2.4rem;
+            }
+            .story-card {
+                background: #fff;
+                border-radius: var(--radius-lg);
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                text-decoration: none;
+                color: var(--ink);
+            }
+            .story-card img {
+                width: 100%;
+                height: 170px;
+                object-fit: cover;
+            }
+            .story-body {
+                padding: 1.5rem 1.5rem 1.7rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                flex: 1;
+            }
+            .story-body h3 {
+                font-size: 1.25rem;
+                color: var(--green-900);
+            }
+            .story-body p {
+                color: var(--ink-soft);
+                font-weight: 500;
+                flex: 1;
+            }
+            .story-more {
+                font-family: "Fredoka", sans-serif;
+                font-weight: 500;
+                color: var(--green-700);
+                font-size: 0.95rem;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.4em;
+                margin-top: 0.4rem;
+            }
+            .story-card:hover .story-more {
+                color: var(--green-900);
+            }
+            .story-more svg {
+                width: 1em;
+                height: 1em;
+                fill: currentColor;
+            }
+
+            .contact-panel {
+                background: var(--green-900);
+                color: #fff;
+                border-radius: calc(var(--radius-lg) * 1.4);
+                padding: clamp(2.5rem, 6vw, 4.5rem);
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: clamp(2rem, 6vw, 4.5rem);
+                align-items: center;
+            }
+            .contact-panel h2 {
+                color: #fff;
+                margin: 0.6rem 0 1rem;
+            }
+            .contact-panel > p {
+                color: rgba(255, 255, 255, 0.8);
+                font-weight: 500;
+                max-width: 30rem;
+            }
+            .contact-list {
+                list-style: none;
+                display: grid;
+                gap: 1.2rem;
+            }
+            .contact-list a {
+                display: flex;
+                align-items: center;
+                gap: 1.1rem;
+                text-decoration: none;
+                font-weight: 600;
+            }
+            .contact-ico {
+                width: 52px;
+                height: 52px;
+                flex: none;
+                border-radius: 50%;
+                background: var(--lime-soft);
+                display: grid;
+                place-items: center;
+                transition: background 0.18s;
+            }
+            .contact-ico svg {
+                width: 1.4rem;
+                height: 1.4rem;
+                fill: var(--green-900);
+            }
+            .contact-list small {
+                display: block;
+                font-weight: 500;
+                font-size: 0.78rem;
+                letter-spacing: 0.1em;
+                color: rgba(255, 255, 255, 0.55);
+            }
+            .contact-list strong {
+                font-size: 1.05rem;
+                color: #fff;
+                font-weight: 600;
+            }
+            .contact-list strong span {
+                color: rgba(255, 255, 255, 0.85);
+            }
+            .contact-meta {
+                margin-top: 1.6rem;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.8rem;
+            }
+            .uni-pill,
+            .hours-pill {
+                font-family: "Fredoka", sans-serif;
+                font-weight: 500;
+                padding: 0.65em 1.4em;
+                border-radius: 999px;
+                font-size: 0.95rem;
+                text-decoration: none;
+                display: inline-block;
+            }
+            .uni-pill {
+                background: var(--green-950);
+                color: var(--lime);
+            }
+            .hours-pill {
+                background: rgba(255, 255, 255, 0.12);
+                color: rgba(255, 255, 255, 0.85);
+            }
+            .site-foot {
+                background: var(--green-950);
+                color: rgba(255, 255, 255, 0.65);
+                padding: 3.5rem 0 0;
+                font-weight: 500;
+            }
+            .foot-grid {
+                display: grid;
+                grid-template-columns: 1.2fr 0.8fr 1fr 1.5fr;
+                gap: clamp(1.6rem, 4vw, 3rem);
+                padding-bottom: 2.6rem;
+            }
+            .foot-logo {
+                width: 88px;
+                height: 88px;
+                object-fit: contain;
+                border-radius: 22px;
+                margin-bottom: 0.9rem;
+            }
+            .foot-brand p {
+                max-width: 28rem;
+                font-size: 0.95rem;
+            }
+            .foot-social {
+                display: flex;
+                gap: 0.7rem;
+                margin-top: 1.2rem;
+            }
+            .foot-social a {
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.08);
+                display: grid;
+                place-items: center;
+                transition:
+                    background 0.18s,
+                    transform 0.18s;
+            }
+            .foot-social a:hover {
+                background: var(--green-700);
+                transform: translateY(-2px);
+            }
+            .foot-social svg {
+                width: 1.2rem;
+                height: 1.2rem;
+                fill: var(--lime-soft);
+            }
+            .foot-col h4 {
+                color: #fff;
+                font-size: 1.05rem;
+                margin-bottom: 0.9rem;
+            }
+            .foot-col a {
+                display: block;
+                width: fit-content;
+                padding: 0.26rem 0;
+                color: rgba(255, 255, 255, 0.65);
+                text-decoration: none;
+                font-size: 0.95rem;
+                transition: color 0.18s;
+            }
+            .foot-col a:hover {
+                color: var(--lime-soft);
+            }
+            .foot-base {
+                border-top: 1px solid rgba(255, 255, 255, 0.12);
+                padding: 1.2rem 0 1.4rem;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem 2rem;
+                align-items: center;
+                justify-content: space-between;
+                font-size: 0.85rem;
+            }
+            .site-foot a {
+                color: var(--lime-soft);
+                text-decoration: none;
+            }
+            .site-foot a:hover {
+                text-decoration: underline;
+            }
+
+            .reveal {
+                opacity: 0;
+                transform: translateY(42px);
+                transition:
+                    opacity 0.7s ease,
+                    transform 0.7s ease;
+            }
+            .reveal.in {
+                opacity: 1;
+                transform: none;
+            }
+            @media (prefers-reduced-motion: reduce) {
+                html {
+                    scroll-snap-type: none;
+                    scroll-behavior: auto;
+                }
+                .credit-card {
+                    background: var(--green-950);
+                    color: #fff;
+                    border-radius: calc(var(--radius-lg) * 1.4);
+                    display: grid;
+                    /*grid-template-columns: 1.05fr 0.95fr;*/
+                    gap: clamp(1.8rem, 5vw, 3.5rem);
+                    align-items: center;
+                }
+                .credit-card p {
+                    color: rgba(255, 255, 255, 0.8);
+                    font-weight: 500;
+                    max-width: 30rem;
+                }
+                @media (max-width: 960px) {
+                    .site-foot .credit-card {
+                        padding: 1.7rem;
+                        gap: 1.1rem;
+                        align-content: start;
+                        background: linear-gradient(
+                            145deg,
+                            var(--green-800) 0%,
+                            var(--green-950) 90%
+                        );
+                        border: 1px solid rgba(211, 242, 138, 0.18);
+                    }
+                    .site-foot .credit-card h2 {
+                        font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+                        margin-bottom: 0.5rem;
+                    }
+                    .site-foot .credit-card p {
+                        font-size: 0.9rem;
+                    }
+                    .site-foot .credit-figure img {
+                        aspect-ratio: 16/9;
+                    }
+                    .credit-card {
+                        grid-template-columns: 1fr;
+                    }
+                    .credit-figure {
+                        order: 1;
+                    }
+                }
+
+                .reveal {
+                    opacity: 1;
+                    transform: none;
+                    transition: none;
+                }
+                .head-in,
+                .site-head.scrolled .head-in {
+                    transition: none;
+                }
+            }
+
+            @media (max-width: 960px) {
+                .hero-grid,
+                .why-grid,
+                .team-grid {
+                    grid-template-columns: 1fr;
+                }
+                .hero-figure {
+                    max-width: 520px;
+                    margin-top: 0.5rem;
+                }
+                .why-figure {
+                    order: -1;
+                    max-width: 520px;
+                }
+                .svc-featured,
+                .about-grid {
+                    grid-template-columns: 1fr;
+                }
+                .prod-card.span6,
+                .prod-card.span4 {
+                    grid-column: span 12;
+                }
+                .contact-panel {
+                    grid-template-columns: 1fr;
+                }
+                .story-grid {
+                    grid-template-columns: 1fr 1fr;
+                }
+                .story-card:last-child {
+                    grid-column: span 2;
+                }
+                .how-row {
+                    grid-template-columns: 1fr;
+                }
+                .how-row img {
+                    max-width: 520px;
+                }
+                .foot-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+            @media (max-width: 820px) {
+                .head-in {
+                    width: min(1120px, 92vw);
+                    padding: 0.45rem 1.4rem 0.45rem 1rem;
+                }
+                #navtoggle-label {
+                    display: grid;
+                    place-items: center;
+                    width: 56px;
+                    height: 56px;
+                    margin-left: auto;
+                    margin-right: 0.4rem;
+                    cursor: pointer;
+                    border-radius: 50%;
+                    background: var(--green-800);
+                    flex: none;
+                }
+                #navtoggle-label span,
+                #navtoggle-label span::before,
+                #navtoggle-label span::after {
+                    content: "";
+                    display: block;
+                    width: 26px;
+                    height: 2.5px;
+                    border-radius: 3px;
+                    background: #fff;
+                    position: relative;
+                    transition: top 0.2s;
+                }
+                #navtoggle-label span::before {
+                    top: -8px;
+                }
+                #navtoggle-label span::after {
+                    top: 5px;
+                }
+                #navtoggle:checked + #navtoggle-label span {
+                    transform: rotate(45deg);
+                }
+                #navtoggle:checked + #navtoggle-label span::before {
+                    top: 0;
+                    transform: rotate(90deg);
+                }
+                #navtoggle:checked + #navtoggle-label span::after {
+                    top: -2px;
+                    opacity: 0;
+                }
+                .site-nav {
+                    position: absolute;
+                    top: calc(100% + 0.6rem);
+                    left: 0;
+                    right: 0;
+                    flex-direction: column;
+                    align-items: stretch;
+                    background: rgba(246, 250, 240, 0.85);
+                    backdrop-filter: blur(16px);
+                    -webkit-backdrop-filter: blur(16px);
+                    padding: 1rem 6%;
+                    gap: 0;
+                    border: 1px solid rgba(46, 108, 57, 0.15);
+                    border-radius: 24px;
+                    display: none;
+                    box-shadow: 0 18px 30px rgba(23, 60, 34, 0.12);
+                }
+                #navtoggle:checked ~ .site-nav {
+                    display: flex;
+                }
+                .site-nav a {
+                    padding: 0.9rem 0;
+                    border-bottom: 1px solid rgba(46, 108, 57, 0.1);
+                    color: var(--ink-soft);
+                }
+                .site-nav a:last-child {
+                    border-bottom: none;
+                }
+                .nav-cta {
+                    display: inline-block;
+                    text-align: center;
+                    margin: 0.6rem 0 0.4rem;
+                }
+                .svc-row {
+                    grid-template-columns: 1fr;
+                    gap: 0.4rem;
+                }
+            }
+            @media (max-width: 560px) {
+                .story-grid {
+                    grid-template-columns: 1fr;
+                }
+                .story-card:last-child {
+                    grid-column: auto;
+                }
+                .svc-card {
+                    padding: 1.6rem;
+                }
+                .prod-card {
+                    padding: 1.5rem;
+                }
+                .ab-card {
+                    padding: 1.5rem;
+                }
+                .ab-card img {
+                    height: 160px;
+                }
+                .step {
+                    grid-template-columns: auto 1fr;
+                    gap: 1rem;
+                }
+                .step-num {
+                    width: 58px;
+                    height: 58px;
+                }
+                .step-num b {
+                    font-size: 1.3rem;
+                }
+                .contact-ico {
+                    width: 44px;
+                    height: 44px;
+                }
+                .foot-base {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header class="site-head">
+            <div class="head-in">
+                <a class="brand" href="#top">
+                    <img
+                        class="brand-mark"
+                        src="assets/Nwaya Logo.png"
+                        alt="Nuwaia Project logo"
+                    />
+                </a>
+                <input type="checkbox" id="navtoggle" hidden />
+                <label
+                    id="navtoggle-label"
+                    for="navtoggle"
+                    aria-label="Toggle navigation"
+                    ><span></span
+                ></label>
+                <nav class="site-nav">
+                    <a href="#about">About</a>
+                    <a href="#why">Why Nawaia</a>
+                    <a href="#services">Services</a>
+                    <a href="#products">Products</a>
+                    <a href="#next">Next Steps</a>
+                    <a
+                        class="nav-cta"
+                        href="https://wa.me/9647776831321"
+                        target="_blank"
+                        rel="noopener"
+                        >Contact Us</a
+                    >
+                </nav>
+            </div>
+        </header>
+        <main id="top">
+            <section class="hero">
+                <div class="wrap hero-grid">
+                    <div>
+                        <h1>From waste to great opportunity.</h1>
+                        <p>
+                            Nawaia is a university-based environmental startup
+                            founded within Al-Bayan University. We transform
+                            research ideas into real, eco-friendly products and
+                            sustainable solutions, combining science, innovation
+                            and green entrepreneurship, where students become
+                            innovators and entrepreneurs shaping the future.
+                        </p>
+                        <div class="hero-actions">
+                            <a
+                                class="btn btn-dark"
+                                href="mailto:contact@nuwaiaproject.com"
+                            >
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path
+                                        d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm-.4 4.25-7.13 4.7a.88.88 0 0 1-.94 0L4.4 8.25a.75.75 0 0 1 .8-1.26l6.8 4.48 6.8-4.48a.75.75 0 0 1 .8 1.26Z"
+                                    />
+                                </svg>
+                                Contact us
+                            </a>
+                            <a class="btn btn-ghost" href="#about"
+                                >About Nuwaia</a
+                            >
+                        </div>
+                    </div>
+                    <figure class="hero-figure">
+                        <img src="assets/Logo.jpg" />
+                    </figure>
+                </div>
+            </section>
+            <section class="about" id="about">
+                <div class="wrap">
+                    <span>About Nuwaia</span>
+                    <h2 class="section-title">
+                        Science, innovation and green entrepreneurship
+                    </h2>
+                    <div class="about-grid">
+                        <article class="ab-card">
+                            <img
+                                src="assets/concept.jpg"
+                                alt="Green seedling with sustainable development icons"
+                            />
+                            <h3>Our Vision</h3>
+                            <p>
+                                To become Iraq's leading green innovation and
+                                circular-economy hub, empowering youth and
+                                transforming universities into engines of
+                                sustainable development.
+                            </p>
+                        </article>
+                        <article class="ab-card">
+                            <img
+                                src="assets/undefined-(20).jpg"
+                                alt="A tree growing inside a light bulb above soil"
+                            />
+                            <h3>Our Mission</h3>
+                            <p>
+                                To enable university students to turn their
+                                research ideas into productive, eco-friendly
+                                projects that support Iraq's green economy and
+                                sustainable growth.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+            <section class="why" id="why">
+                <div class="wrap why-grid">
+                    <div>
+                        <div class="why-block">
+                            <span>Our Concept</span>
+                            <h3>A startup, not just a lab</h3>
+                            <p>
+                                Nawaia is not just an environmental lab, but a
+                                productive startup that connects science,
+                                innovation and the market &mdash; turning
+                                academic knowledge into real products and green
+                                job opportunities.
+                            </p>
+                        </div>
+                        <div class="why-block">
+                            <span>Why Nawaia</span>
+                            <h3>Tomorrow begins at university</h3>
+                            <p>
+                                University students transform their majors into
+                                practical projects, creating a link between
+                                education and the job market through the
+                                sustainable economy cycle.
+                            </p>
+                        </div>
+                    </div>
+                    <figure class="why-figure">
+                        <img
+                            src="assets/why.jpg"
+                            alt="Young recyclers working with Nawaia"
+                        />
+                    </figure>
+                </div>
+                <div class="wrap">
+                    <div class="how-row">
+                        <img
+                            src="assets/labjpg.jpg"
+                            alt="Equipment inside the Nawaia environmental lab"
+                        />
+                        <div>
+                            <span>How We Work</span>
+                            <h2>From research idea to market</h2>
+                            <ol class="how-list">
+                                <li>
+                                    <strong>Scientific research</strong> starts
+                                    at the university, grounded in real academic
+                                    knowledge.
+                                </li>
+                                <li>
+                                    Ideas are transformed into a
+                                    <strong>working prototype</strong>.
+                                </li>
+                                <li>
+                                    <strong>Experimental production</strong>
+                                    runs through the environmental lab.
+                                </li>
+                                <li>
+                                    We go to market through
+                                    <strong
+                                        >entrepreneurial partnerships</strong
+                                    >
+                                    with the private sector.
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="services" id="services">
+                <div class="wrap">
+                    <span>Our Services</span>
+                    <h2 class="section-title">What we do</h2>
+                    <p class="services-lead">
+                        Supporting startups and educational institutions in
+                        adopting green innovation, recycling and sustainability
+                        solutions.
+                    </p>
+                    <div class="svc-featured">
+                        <article class="svc-card">
+                            <img
+                                src="assets/Sustainable-living-workshop.jpg"
+                                alt="A community sustainability workshop"
+                            />
+                            <h3>Training Workshops</h3>
+                            <p>
+                                Hands-on training workshops in environmental
+                                sustainability and circular economy, targeting
+                                students and professionals across sectors.
+                            </p>
+                        </article>
+                        <article class="svc-card">
+                            <img
+                                src="assets/manufacturing-of-eco-friendly-machines.jpg"
+                                alt="Machines manufactured locally at the university"
+                            />
+                            <h3>Design &amp; Manufacturing</h3>
+                            <p>
+                                Local design and manufacturing of eco-friendly
+                                machines and devices, developed by young Iraqi
+                                innovators to support recycling and
+                                environmental resource management.
+                            </p>
+                        </article>
+                    </div>
+                    <div class="svc-rows">
+                        <div class="svc-row">
+                            <h3>Consulting Services</h3>
+                            <p>
+                                Environmental and technical consulting
+                                supporting startups and educational institutions
+                                in adopting green innovation and sustainability
+                                solutions.
+                            </p>
+                        </div>
+                        <div class="svc-row">
+                            <h3>Enhance Recycling Efficiency</h3>
+                            <p>
+                                Design and implementation of organic waste
+                                management systems within institutions and
+                                universities to enhance recycling efficiency and
+                                reduce environmental impact.
+                            </p>
+                        </div>
+                        <div class="svc-row">
+                            <h3>Environmental Awareness</h3>
+                            <p>
+                                Design of green gardens and sustainable learning
+                                spaces within universities and community centers
+                                to promote environmental awareness.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="products" id="products">
+                <div class="wrap">
+                    <span>Our Products</span>
+                    <h2 class="section-title">Made from waste, made to last</h2>
+                    <div class="prod-grid">
+                        <article class="prod-card span6">
+                            <img
+                                src="assets/Sustainable-Vertical-Farming-Systems.jpg"
+                                alt="Vertical farming system for limited spaces"
+                            />
+                            <h3>Sustainable Vertical Farming Systems</h3>
+                            <p>
+                                We develop smart vertical farming systems
+                                designed for limited spaces, applying modern
+                                techniques to reduce water and energy
+                                consumption while increasing local food
+                                production.
+                            </p>
+                        </article>
+                        <article class="prod-card span6">
+                            <img
+                                src="assets/undefined-(19).jpg"
+                                alt="Device manufactured locally by young Iraqi talents"
+                            />
+                            <h3>Locally Manufactured Devices</h3>
+                            <p>
+                                We design and manufacture innovative machines
+                                and devices inside the university, built by
+                                young Iraqi talents to recycle organic, water
+                                and plastic waste &mdash; supporting local
+                                innovation and sustainable green industry.
+                            </p>
+                        </article>
+                        <article class="prod-card span4">
+                            <img
+                                src="assets/thumbnail-(16).jpg"
+                                alt="Solid organic fertilizers"
+                            />
+                            <h3>Solid Organic Fertilizers</h3>
+                            <p>
+                                Nawaia produces two types of environmentally
+                                friendly solid fertilizers: Organic Compost and
+                                Vermicompost.
+                            </p>
+                        </article>
+                        <article class="prod-card span4">
+                            <img
+                                src="assets/thumbnail-(15).jpg"
+                                alt="Organic nutrient blends"
+                            />
+                            <h3>Organic Nutrient Blends</h3>
+                            <p>
+                                Natural elements rich in iron, phosphorus and
+                                potassium (NPK), used to improve plant growth
+                                and increase soil fertility in environmentally
+                                friendly ways.
+                            </p>
+                        </article>
+                        <article class="prod-card span4">
+                            <img
+                                src="assets/thumbnail.jpg"
+                                alt="GeoTea liquid fertilizer preparation"
+                            />
+                            <h3>Liquid Fertilizer (GeoTea)</h3>
+                            <p>
+                                A natural organic solution rich in nutrients and
+                                active microbes, used as a foliar or soil
+                                fertilizer to increase plant strength and
+                                productivity in a safe way.
+                            </p>
+                        </article>
+                        <article class="prod-card span6">
+                            <img
+                                src="assets/Eco-Friendly-Plastic-Products.jpg"
+                                alt="Eco-friendly products made from recycled plastic"
+                            />
+                            <h3>Eco-Friendly Plastic Products</h3>
+                            <p>
+                                We recycle plastic waste to produce useful tools
+                                and products for agriculture and community use
+                                &mdash; contributing to pollution reduction and
+                                promoting the circular economy.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+            <section class="team">
+                <div class="wrap team-grid">
+                    <div>
+                        <span>Our Team</span>
+                        <h2 class="section-title">
+                            Experts and certified trainers
+                        </h2>
+                        <p>
+                            The Nawaia team includes experts in environment,
+                            recycling and sustainable management, as well as
+                            certified trainers in green entrepreneurship with
+                            both local and international experience.
+                        </p>
+                    </div>
+                    <img
+                        src="assets/experts-in-environmentjpg.jpg"
+                        alt="The Nuwaia team"
+                    />
+                </div>
+            </section>
+            <section class="steps" id="next">
+                <div class="wrap steps-inner">
+                    <span>Our Next Step</span>
+                    <h2 class="section-title">Where Nawaia is heading</h2>
+                    <ol class="steps-list">
+                        <li class="step">
+                            <span class="step-num">
+                                <svg viewBox="0 0 80 80" aria-hidden="true">
+                                    <path
+                                        d="M40 4l7 8 10-4 3 11 11 3-4 10 8 7-8 7 4 10-11 3-3 11-10-4-7 8-7-8-10 4-3-11-11-3 4-10-8-7 8-7-4-10 11-3 3-11 10 4z"
+                                    />
+                                </svg>
+                                <b>1</b>
+                            </span>
+                            <div>
+                                <h3>Artificial Intelligence (AI)</h3>
+                                <p>
+                                    Integrating Artificial Intelligence to
+                                    analyze environmental data and enhance
+                                    sustainability performance.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="step">
+                            <span class="step-num">
+                                <svg viewBox="0 0 80 80" aria-hidden="true">
+                                    <path
+                                        d="M40 4l7 8 10-4 3 11 11 3-4 10 8 7-8 7 4 10-11 3-3 11-10-4-7 8-7-8-10 4-3-11-11-3 4-10-8-7 8-7-4-10 11-3 3-11 10 4z"
+                                    />
+                                </svg>
+                                <b>2</b>
+                            </span>
+                            <div>
+                                <h3>Environmental Technology Lab</h3>
+                                <p>
+                                    Establishing an Environmental Technology Lab
+                                    to train students and empower researchers in
+                                    green innovation and circular economy
+                                    practices.
+                                </p>
+                            </div>
+                        </li>
+                    </ol>
+                    <p class="seed-line">From a seed, the future grows.</p>
+                    <div style="height: 2.2rem"></div>
+                    <span>Our Aims</span>
+                    <h2
+                        class="section-title"
+                        style="font-size: clamp(1.7rem, 3.6vw, 2.4rem)"
+                    >
+                        Smart environmental transformation
+                    </h2>
+                    <p
+                        style="
+                            color: var(--ink-soft);
+                            font-weight: 500;
+                            max-width: 40rem;
+                        "
+                    >
+                        Nawaia aims to expand towards smart environmental
+                        transformation through a series of innovative
+                        initiatives that combine technology, sustainability and
+                        youth empowerment.
+                    </p>
+                    <ul class="steps-list">
+                        <li class="step">
+                            <span class="step-num">
+                                <svg viewBox="0 0 80 80" aria-hidden="true">
+                                    <path
+                                        d="M40 4l7 8 10-4 3 11 11 3-4 10 8 7-8 7 4 10-11 3-3 11-10-4-7 8-7-8-10 4-3-11-11-3 4-10-8-7 8-7-4-10 11-3 3-11 10 4z"
+                                    />
+                                </svg>
+                                <b>1</b>
+                            </span>
+                            <div>
+                                <h3>Nawaia Smart App</h3>
+                                <p>
+                                    Launching the Nawaia Smart App for waste
+                                    sorting and collection, encouraging
+                                    community participation in recycling.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="step">
+                            <span class="step-num">
+                                <svg viewBox="0 0 80 80" aria-hidden="true">
+                                    <path
+                                        d="M40 4l7 8 10-4 3 11 11 3-4 10 8 7-8 7 4 10-11 3-3 11-10-4-7 8-7-8-10 4-3-11-11-3 4-10-8-7 8-7-4-10 11-3 3-11 10 4z"
+                                    />
+                                </svg>
+                                <b>2</b>
+                            </span>
+                            <div>
+                                <h3>Green Markets</h3>
+                                <p>
+                                    Establishing Green Markets to promote and
+                                    market recycled and locally produced
+                                    eco-products within universities.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="step">
+                            <span class="step-num">
+                                <svg viewBox="0 0 80 80" aria-hidden="true">
+                                    <path
+                                        d="M40 4l7 8 10-4 3 11 11 3-4 10 8 7-8 7 4 10-11 3-3 11-10-4-7 8-7-8-10 4-3-11-11-3 4-10-8-7 8-7-4-10 11-3 3-11 10 4z"
+                                    />
+                                </svg>
+                                <b>3</b>
+                            </span>
+                            <div>
+                                <h3>Reduce the Environmental Footprint</h3>
+                                <p>
+                                    Developing innovative projects in water
+                                    recycling and renewable energy to reduce the
+                                    environmental footprint.
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="stories" id="stories">
+                <div class="wrap">
+                    <span>Blog</span>
+                    <h2 class="section-title">Stories from the ground</h2>
+                    <div class="story-grid">
+                        <a
+                            class="story-card"
+                            href="https://www.linkedin.com/feed/update/urn:li:activity:7250836736858095617/"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            <img
+                                src="assets/blog2.jpg"
+                                alt="Community members sorting waste together"
+                            />
+                            <span class="story-body">
+                                <h3>Lamma Wa7na Nakhadarha Initiative</h3>
+                                <p>
+                                    The first initiative in Iraq encouraging
+                                    families to sort waste at the source &mdash;
+                                    turning it into fertile soil and
+                                    contributing to a greener, sustainable
+                                    future.
+                                </p>
+                                <span class="story-more">
+                                    Read on LinkedIn
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path
+                                            d="M9.7 5.3a1 1 0 0 0 0 1.4l5.3 5.3-5.3 5.3a1 1 0 0 0 1.4 1.4l6-6a1 1 0 0 0 0-1.4l-6-6a1 1 0 0 0-1.4 0Z"
+                                        />
+                                    </svg>
+                                </span>
+                            </span>
+                        </a>
+                        <a
+                            class="story-card"
+                            href="https://www.linkedin.com/feed/update/urn:li:activity:7283107053911355392/"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            <img
+                                src="assets/blog1.jpg"
+                                alt="University partners at the Ecosystem launch"
+                            />
+                            <span class="story-body">
+                                <h3>Ecosystem Implementation</h3>
+                                <p>
+                                    The Ecosystem launches in government
+                                    universities and institutes &mdash;
+                                    empowering young people to become business
+                                    founders rather than job seekers.
+                                </p>
+                                <span class="story-more">
+                                    Read on LinkedIn
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path
+                                            d="M9.7 5.3a1 1 0 0 0 0 1.4l5.3 5.3-5.3 5.3a1 1 0 0 0 1.4 1.4l6-6a1 1 0 0 0 0-1.4l-6-6a1 1 0 0 0-1.4 0Z"
+                                        />
+                                    </svg>
+                                </span>
+                            </span>
+                        </a>
+                        <a
+                            class="story-card"
+                            href="https://www.linkedin.com/feed/update/urn:li:activity:7271901947618578433/"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            <img
+                                src="assets/blog3.jpg"
+                                alt="Volunteers planting trees"
+                            />
+                            <span class="story-body">
+                                <h3>Tree Planting</h3>
+                                <p>
+                                    The tree-planting movement in Iraq is more
+                                    than a campaign &mdash; it bodes well for a
+                                    promising Iraq and a generation with a
+                                    beautiful sense of love for its country.
+                                </p>
+                                <span class="story-more">
+                                    Read on LinkedIn
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path
+                                            d="M9.7 5.3a1 1 0 0 0 0 1.4l5.3 5.3-5.3 5.3a1 1 0 0 0 1.4 1.4l6-6a1 1 0 0 0 0-1.4l-6-6a1 1 0 0 0-1.4 0Z"
+                                        />
+                                    </svg>
+                                </span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <section class="contact" id="contact">
+                <div class="wrap">
+                    <div class="contact-panel">
+                        <div>
+                            <span>Contact Us</span>
+                            <h2>Let's grow something together</h2>
+                            <p>
+                                Partner with us, book a workshop or visit the
+                                lab at Al-Bayan University, we'd love to hear
+                                from you.
+                            </p>
+                            <div class="contact-meta">
+                                <a
+                                    class="uni-pill"
+                                    href="https://www.google.com/maps/place/Al-Bayan+University/@33.2840631,44.2793525,17z/data=!3m1!4b1!4m6!3m5!1s0x1559d59bdb4c546b:0x9f02d0ea6ed3485d!8m2!3d33.2840631!4d44.2819274!16s%2Fg%2F11c1thw_3s?entry=ttu&g_ep=EgoyMDI2MTAxOS4wIKXMDSoASAFQAw%3D%3D"
+                                    target="_blank"
+                                    rel="noopener"
+                                    >Al Bayan University, Baghdad</a
+                                >
+                                <span class="hours-pill"
+                                    >Sun-Thu, 08:00-17:00</span
+                                >
+                            </div>
+                        </div>
+                        <ul class="contact-list">
+                            <li>
+                                <a href="mailto:contact@nuwaiaproject.com">
+                                    <span class="contact-ico"
+                                        ><svg
+                                            viewBox="0 0 24 24"
+                                            aria-hidden="true"
+                                        >
+                                            <path
+                                                d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm-.4 4.25-7.13 4.7a.88.88 0 0 1-.94 0L4.4 8.25a.75.75 0 0 1 .8-1.26l6.8 4.48 6.8-4.48a.75.75 0 0 1 .8 1.26Z"
+                                            /></svg
+                                    ></span>
+                                    <span
+                                        ><small>Email</small
+                                        ><strong
+                                            >contact&#64;nuwaiaproject.com</strong
+                                        ></span
+                                    >
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="https://wa.me/9647776831321"
+                                    target="_blank"
+                                    rel="noopener"
+                                >
+                                    <span class="contact-ico"
+                                        ><svg
+                                            viewBox="0 0 24 24"
+                                            aria-hidden="true"
+                                        >
+                                            <path
+                                                d="M12.04 2a9.9 9.9 0 0 0-8.4 15.2L2.2 21.8l4.8-1.4A9.9 9.9 0 1 0 12.04 2Zm5.8 14.2c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1a14 14 0 0 1-5.5-4.8c-.7-1-1.2-2.3-1.2-3.3 0-1 .5-1.7.9-2 .1-.2.3-.3.5-.3h.8c.2 0 .5 0 .7.5l1 2.3c0 .2 0 .4-.1.5l-.6.7c-.2.2-.3.3-.2.5.5.9 1.6 2.2 2.8 2.9.2.2.4.2.6 0l.9-1c.2-.2.4-.2.6-.1l2.3 1.2c.4.2.4.5.4.7 0 .1 0 .7-.2 1.1Z"
+                                            /></svg
+                                    ></span>
+                                    <span
+                                        ><small>Phone / WhatsApp</small
+                                        ><strong
+                                            >+964 777 683 1321</strong
+                                        ></span
+                                    >
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:nawaia.project2025@gmail.com">
+                                    <span class="contact-ico"
+                                        ><svg
+                                            viewBox="0 0 24 24"
+                                            aria-hidden="true"
+                                        >
+                                            <path
+                                                d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm-.4 4.25-7.13 4.7a.88.88 0 0 1-.94 0L4.4 8.25a.75.75 0 0 1 .8-1.26l6.8 4.48 6.8-4.48a.75.75 0 0 1 .8 1.26Z"
+                                            /></svg
+                                    ></span>
+                                    <span
+                                        ><small>Email 2</small
+                                        ><strong
+                                            >nawaia.project2025&#64;gmail.com</strong
+                                        ></span
+                                    >
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="https://www.google.com/maps/place/Al-Bayan+University/@33.2840631,44.2793525,17z/data=!3m1!4b1!4m6!3m5!1s0x1559d59bdb4c546b:0x9f02d0ea6ed3485d!8m2!3d33.2840631!4d44.2819274!16s%2Fg%2F11c1thw_3s?entry=ttu&g_ep=EgoyMDI2MTAxOS4wIKXMDSoASAFQAw%3D%3D"
+                                    target="_blank"
+                                    rel="noopener"
+                                >
+                                    <span class="contact-ico"
+                                        ><svg
+                                            viewBox="0 0 24 24"
+                                            aria-hidden="true"
+                                        >
+                                            <path
+                                                d="M12 2a7.4 7.4 0 0 0-7.4 7.4c0 5.1 6.5 11.9 6.8 12.2a.9.9 0 0 0 1.2 0c.3-.3 6.8-7.1 6.8-12.2A7.4 7.4 0 0 0 12 2Zm0 10.4a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"
+                                            /></svg
+                                    ></span>
+                                    <span
+                                        ><small>Address</small
+                                        ><strong
+                                            >Airport Street, Baghdad,
+                                            Iraq</strong
+                                        ></span
+                                    >
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="https://www.instagram.com/nawaia2025"
+                                    target="_blank"
+                                    rel="noopener"
+                                >
+                                    <span class="contact-ico"
+                                        ><svg
+                                            viewBox="0 0 24 24"
+                                            aria-hidden="true"
+                                        >
+                                            <path
+                                                d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.9.2 2.3.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1.1.4 2.3.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.9-.4 2.3-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1.1.4-2.3.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.9-.2-2.3-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1.1-.4-2.3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.9.4-2.3.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1.1-.4 2.3-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 2.1c-3.1 0-3.5 0-4.7.1-1.1 0-1.5.2-1.9.3-.4.2-.7.4-1 .7-.3.3-.5.6-.7 1-.1.4-.3.8-.3 1.9-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c0 1.1.2 1.5.3 1.9.2.4.4.7.7 1 .3.3.6.5 1 .7.4.1.8.3 1.9.3 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1 0 1.5-.2 1.9-.3.4-.2.7-.4 1-.7.3-.3.5-.6.7-1 .1-.4.3-.8.3-1.9.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c0-1.1-.2-1.5-.3-1.9a2.7 2.7 0 0 0-.7-1 2.7 2.7 0 0 0-1-.7c-.4-.1-.8-.3-1.9-.3-1.2-.1-1.6-.1-4.7-.1Zm0 3.6a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 8.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Zm6.4-8.4a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0Z"
+                                            /></svg
+                                    ></span>
+                                    <span
+                                        ><small>Instagram</small
+                                        ><strong>&#64;nawaia2025</strong></span
+                                    >
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <script>
+            (function () {
+                var head = document.querySelector(".site-head");
+                var pill = document.querySelector(".head-in");
+                var compact = window.matchMedia("(max-width: 820px)");
+                function measure() {
+                    if (compact.matches) {
+                        pill.style.removeProperty("--nav-w");
+                        return;
+                    }
+                    var was = head.classList.contains("scrolled");
+                    head.classList.remove("scrolled");
+                    pill.style.removeProperty("--nav-w");
+                    var w = pill.scrollWidth + 30;
+                    pill.style.setProperty("--nav-w", w + "px");
+                    if (was) head.classList.add("scrolled");
+                }
+                function onScroll() {
+                    head.classList.toggle("scrolled", window.scrollY > 60);
+                }
+                window.addEventListener("scroll", onScroll, { passive: true });
+                window.addEventListener("resize", measure);
+                window.addEventListener("load", measure);
+                if (document.fonts && document.fonts.ready)
+                    document.fonts.ready.then(measure);
+                measure();
+                onScroll();
+                var sections = document.querySelectorAll("main > section");
+                if ("IntersectionObserver" in window) {
+                    var io = new IntersectionObserver(
+                        function (entries) {
+                            entries.forEach(function (e) {
+                                if (e.isIntersecting) {
+                                    e.target.classList.add("in");
+                                    io.unobserve(e.target);
+                                }
+                            });
+                        },
+                        { threshold: 0.08 },
+                    );
+                    sections.forEach(function (s) {
+                        s.classList.add("reveal");
+                        io.observe(s);
+                    });
+                }
+            })();
+        </script>
+        <footer class="site-foot">
+            <div class="wrap foot-grid">
+                <div class="foot-brand">
+                    <img
+                        class="foot-logo"
+                        src="assets/Nwaya Logo.png"
+                        alt="Nuwaia Project logo"
+                    />
+                    <p>
+                        Nuwaia is a university-based environmental startup
+                        turning research ideas into real, eco-friendly products
+                        and sustainable solutions &mdash; Al-Bayan University,
+                        Baghdad.
+                    </p>
+                    <div class="foot-social">
+                        <a
+                            href="https://www.instagram.com/nawaia2025"
+                            target="_blank"
+                            rel="noopener"
+                            aria-label="Instagram"
+                        >
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path
+                                    d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.9.2 2.3.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1.1.4 2.3.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.9-.4 2.3-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1.1.4-2.3.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.9-.2-2.3-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1.1-.4-2.3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.9.4-2.3.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1.1-.4 2.3-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 2.1c-3.1 0-3.5 0-4.7.1-1.1 0-1.5.2-1.9.3-.4.2-.7.4-1 .7-.3.3-.5.6-.7 1-.1.4-.3.8-.3 1.9-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c0 1.1.2 1.5.3 1.9.2.4.4.7.7 1 .3.3.6.5 1 .7.4.1.8.3 1.9.3 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1 0 1.5-.2 1.9-.3.4-.2.7-.4 1-.7.3-.3.5-.6.7-1 .1-.4.3-.8.3-1.9.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c0-1.1-.2-1.5-.3-1.9a2.7 2.7 0 0 0-.7-1 2.7 2.7 0 0 0-1-.7c-.4-.1-.8-.3-1.9-.3-1.2-.1-1.6-.1-4.7-.1Zm0 3.6a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 8.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Zm6.4-8.4a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0Z"
+                                />
+                            </svg>
+                        </a>
+                        <a
+                            href="https://wa.me/9647776831321"
+                            target="_blank"
+                            rel="noopener"
+                            aria-label="WhatsApp"
+                        >
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path
+                                    d="M12.04 2a9.9 9.9 0 0 0-8.4 15.2L2.2 21.8l4.8-1.4A9.9 9.9 0 1 0 12.04 2Zm5.8 14.2c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1a14 14 0 0 1-5.5-4.8c-.7-1-1.2-2.3-1.2-3.3 0-1 .5-1.7.9-2 .1-.2.3-.3.5-.3h.8c.2 0 .5 0 .7.5l1 2.3c0 .2 0 .4-.1.5l-.6.7c-.2.2-.3.3-.2.5.5.9 1.6 2.2 2.8 2.9.2.2.4.2.6 0l.9-1c.2-.2.4-.2.6-.1l2.3 1.2c.4.2.4.5.4.7 0 .1 0 .7-.2 1.1Z"
+                                />
+                            </svg>
+                        </a>
+                        <a
+                            href="mailto:contact@nuwaiaproject.com"
+                            aria-label="Email"
+                        >
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path
+                                    d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm-.4 4.25-7.13 4.7a.88.88 0 0 1-.94 0L4.4 8.25a.75.75 0 0 1 .8-1.26l6.8 4.48 6.8-4.48a.75.75 0 0 1 .8 1.26Z"
+                                />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <nav class="foot-col" aria-label="Footer">
+                    <h4>Explore</h4>
+                    <a href="#about">About</a>
+                    <a href="#why">Why Nawaia</a>
+                    <a href="#services">Services</a>
+                    <a href="#products">Products</a>
+                    <a href="#next">Next Steps</a>
+                    <a href="#stories">Stories</a>
+                </nav>
+                <div class="foot-col">
+                    <h4>Contact</h4>
+                    <a href="mailto:contact@nuwaiaproject.com"
+                        >contact&#64;nuwaiaproject.com</a
+                    >
+                    <a
+                        href="https://wa.me/9647776831321"
+                        target="_blank"
+                        rel="noopener"
+                        >+964 777 683 1321</a
+                    >
+                    <a
+                        href="https://www.google.com/maps/place/Al-Bayan+University/@33.2840631,44.2793525,17z/data=!3m1!4b1!4m6!3m5!1s0x1559d59bdb4c546b:0x9f02d0ea6ed3485d!8m2!3d33.2840631!4d44.2819274!16s%2Fg%2F11c1thw_3s?entry=ttu&g_ep=EgoyMDI2MTAxOS4wIKXMDSoASAFQAw%3D%3D"
+                        target="_blank"
+                        rel="noopener"
+                        >Al Bayan University, Baghdad</a
+                    >
+                    <a
+                        href="https://www.instagram.com/nawaia2025"
+                        target="_blank"
+                        rel="noopener"
+                        >&#64;nawaia2025</a
+                    >
+                </div>
+                <div class="credit-card">
+                    <div>
+                        <a href="https://neo.obsidianos.xyz">
+                            Website programmed &amp; designed by
+                            <img src="assets/neoapps.png" loading="lazy" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="wrap foot-base">
+                <p>
+                    &copy; 2026-present <a href="#top">Nuwaia Project</a>
+                    &middot; All rights reserved.
+                </p>
+                <a href="https://neo.obsidianos.xyz"
+                    ><p>Website programmed and designed by neoapps</p></a
+                >
+            </div>
+        </footer>
+    </body>
 </html>
