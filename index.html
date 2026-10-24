@@ -161,9 +161,13 @@
                 font-family: "Fredoka", sans-serif;
                 font-weight: 500;
                 font-size: 1.1rem !important;
+                transition:
+                    background 0.15s ease,
+                    border-radius 0.15s ease;
             }
             .nav-cta:hover {
                 background: var(--green-900);
+                border-radius: 15px;
             }
             #navtoggle,
             #navtoggle-label {
@@ -246,7 +250,12 @@
                 text-decoration: none;
                 padding: 0.7em 1.5em;
                 border-radius: 999px;
-                transition: background 0.15s;
+                transition:
+                    background 0.15s ease,
+                    border-radius 0.15s ease;
+            }
+            .btn:hover {
+                border-radius: 20px;
             }
             .btn svg {
                 width: 1.1em;
@@ -345,16 +354,14 @@
             }
             .why-figure img {
                 width: 100%;
-                border-radius: var(--radius-lg) var(--radius-lg)
-                    var(--radius-lg) 0;
+                border-radius: var(--radius-lg);
                 object-fit: cover;
             }
             .why-figure img:first-child {
                 aspect-ratio: 4/3.2;
             }
             .why-figure img:last-child {
-                border-radius: 0 var(--radius-lg) var(--radius-lg)
-                    var(--radius-lg);
+                border-radius: var(--radius-lg);
                 aspect-ratio: 4/2.6;
             }
             .how-row {
@@ -545,6 +552,14 @@
                 display: grid;
                 gap: 1.8rem;
             }
+            @keyframes spin {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
             .step {
                 display: grid;
                 grid-template-columns: auto 1fr;
@@ -563,6 +578,7 @@
                 position: absolute;
                 inset: 0;
                 fill: var(--ink-soft);
+                animation: spin 8s linear infinite;
             }
             .step-num b {
                 position: relative;
@@ -812,67 +828,6 @@
                 text-decoration: underline;
             }
 
-            .reveal {
-                opacity: 0;
-                transition:
-                    opacity 0.7s ease,
-                    transform 0.7s ease;
-            }
-            .reveal.in {
-                opacity: 1;
-                transform: none;
-            }
-            @media (prefers-reduced-motion: reduce) {
-                html {
-                    scroll-snap-type: none;
-                    scroll-behavior: auto;
-                }
-                .credit-card {
-                    display: grid;
-                    /*grid-template-columns: 1.05fr 0.95fr;*/
-                    gap: clamp(1.8rem, 5vw, 3.5rem);
-                    align-items: center;
-                }
-                .credit-card p {
-                    color: rgba(255, 255, 255, 0.8);
-                    font-weight: 500;
-                    max-width: 30rem;
-                }
-                @media (max-width: 960px) {
-                    .site-foot .credit-card {
-                        padding: 1.7rem;
-                        gap: 1.1rem;
-                        align-content: start;
-                    }
-                    .site-foot .credit-card h2 {
-                        font-size: clamp(1.4rem, 2.2vw, 1.8rem);
-                        margin-bottom: 0.5rem;
-                    }
-                    .site-foot .credit-card p {
-                        font-size: 0.9rem;
-                    }
-                    .site-foot .credit-figure img {
-                        aspect-ratio: 16/9;
-                    }
-                    .credit-card {
-                        grid-template-columns: 1fr;
-                    }
-                    .credit-figure {
-                        order: 1;
-                    }
-                }
-
-                .reveal {
-                    opacity: 1;
-                    transform: none;
-                    transition: none;
-                }
-                .head-in,
-                .site-head.scrolled .head-in {
-                    transition: none;
-                }
-            }
-
             @media (max-width: 960px) {
                 .hero-grid,
                 .why-grid,
@@ -1080,8 +1035,8 @@
                         <p>
                             Nuwaia is a university-based environmental startup
                             founded within Al-Bayan University. We transform
-                            research ideas into real, eco-friendly products and
-                            sustainable solutions, combining science, innovation
+                            research ideas into eco-friendly products and
+                            sustainable solutions. Combining science, innovation
                             and green entrepreneurship, where students become
                             innovators and entrepreneurs shaping the future.
                         </p>
@@ -1112,23 +1067,17 @@
                     </h2>
                     <div class="about-grid">
                         <article class="ab-card">
-                            <img
-                                src="assets/concept.jpg"
-                                alt="Green seedling with sustainable development icons"
-                            />
+                            <img src="assets/h/8.jpg" />
                             <h3>Our Vision</h3>
                             <p>
                                 To become Iraq's leading green innovation and
                                 circular-economy hub, empowering youth and
-                                transforming universities into engines of
+                                converting universities into engines of
                                 sustainable development.
                             </p>
                         </article>
                         <article class="ab-card">
-                            <img
-                                src="assets/undefined-(20).jpg"
-                                alt="A tree growing inside a light bulb above soil"
-                            />
+                            <img src="assets/h/2.jpg" />
                             <h3>Our Mission</h3>
                             <p>
                                 To enable university students to turn their
@@ -1149,9 +1098,9 @@
                             <p>
                                 Nuwaia is not just an environmental lab, but a
                                 productive startup that connects science,
-                                innovation and the market &mdash; turning
-                                academic knowledge into real products and green
-                                job opportunities.
+                                innovation and the market, converting academic
+                                knowledge to products and green job
+                                opportunities.
                             </p>
                         </div>
                         <div class="why-block">
@@ -1166,18 +1115,12 @@
                         </div>
                     </div>
                     <figure class="why-figure">
-                        <img
-                            src="assets/why.jpg"
-                            alt="Young recyclers working with Nuwaia"
-                        />
+                        <img src="assets/h/3.jpg" />
                     </figure>
                 </div>
                 <div class="wrap">
                     <div class="how-row">
-                        <img
-                            src="assets/labjpg.jpg"
-                            alt="Equipment inside the Nuwaia environmental lab"
-                        />
+                        <img src="assets/labjpg.jpg" />
                         <div>
                             <span>How We Work</span>
                             <h2>From research idea to market</h2>
@@ -1220,10 +1163,7 @@
                     </p>
                     <div class="svc-featured">
                         <article class="svc-card">
-                            <img
-                                src="assets/Sustainable-living-workshop.jpg"
-                                alt="A community sustainability workshop"
-                            />
+                            <img src="assets/h/7.jpg" />
                             <h3>Training Workshops</h3>
                             <p>
                                 Hands-on training workshops in environmental
@@ -1232,10 +1172,7 @@
                             </p>
                         </article>
                         <article class="svc-card">
-                            <img
-                                src="assets/manufacturing-of-eco-friendly-machines.jpg"
-                                alt="Machines manufactured locally at the university"
-                            />
+                            <img src="assets/h/10.jpg" />
                             <h3>Design &amp; Manufacturing</h3>
                             <p>
                                 Local design and manufacturing of eco-friendly
@@ -1295,17 +1232,14 @@
                             </p>
                         </article>
                         <article class="prod-card span6">
-                            <img
-                                src="assets/undefined-(19).jpg"
-                                alt="Device manufactured locally by young Iraqi talents"
-                            />
+                            <img src="assets/h/6.jpg" />
                             <h3>Locally Manufactured Devices</h3>
                             <p>
                                 We design and manufacture innovative machines
                                 and devices inside the university, built by
                                 young Iraqi talents to recycle organic, water
-                                and plastic waste &mdash; supporting local
-                                innovation and sustainable green industry.
+                                and plastic waste, supporting local innovation
+                                and sustainable green industry.
                             </p>
                         </article>
                         <article class="prod-card span4">
@@ -1334,10 +1268,7 @@
                             </p>
                         </article>
                         <article class="prod-card span4">
-                            <img
-                                src="assets/thumbnail.jpg"
-                                alt="GeoTea liquid fertilizer preparation"
-                            />
+                            <img src="assets/thumbnail.jpg" />
                             <h3>Liquid Fertilizer (GeoTea)</h3>
                             <p>
                                 A natural organic solution rich in nutrients and
@@ -1349,13 +1280,12 @@
                         <article class="prod-card span6">
                             <img
                                 src="assets/Eco-Friendly-Plastic-Products.jpg"
-                                alt="Eco-friendly products made from recycled plastic"
                             />
                             <h3>Eco-Friendly Plastic Products</h3>
                             <p>
                                 We recycle plastic waste to produce useful tools
-                                and products for agriculture and community use
-                                &mdash; contributing to pollution reduction and
+                                and products for agriculture and community use,
+                                contributing to pollution reduction and
                                 promoting the circular economy.
                             </p>
                         </article>
@@ -1365,7 +1295,6 @@
             <section class="team">
                 <div class="wrap team-grid">
                     <div>
-                        <span>Our Team</span>
                         <h2 class="section-title">
                             Experts and certified trainers
                         </h2>
@@ -1376,10 +1305,7 @@
                             both local and international experience.
                         </p>
                     </div>
-                    <img
-                        src="assets/experts-in-environmentjpg.jpg"
-                        alt="The Nuwaia team"
-                    />
+                    <img src="assets/h/4.jpg" />
                 </div>
             </section>
             <section class="steps" id="next">
@@ -1773,12 +1699,8 @@
                         },
                         { threshold: 0.08 },
                     );
-                    sections.forEach(function (s) {
-                        s.classList.add("reveal");
-                        io.observe(s);
-                    });
                 }
-             })();
+            })();
         </script>
         <footer class="site-foot">
             <div class="wrap foot-grid">
@@ -1791,8 +1713,7 @@
                     <p>
                         Nuwaia is a university-based environmental startup
                         turning research ideas into real, eco-friendly products
-                        and sustainable solutions &mdash; Al-Bayan University,
-                        Baghdad.
+                        and sustainable solutions, Al-Bayan University, Baghdad.
                     </p>
                     <div class="foot-social">
                         <a
@@ -1867,7 +1788,6 @@
                 <div class="credit-card">
                     <div>
                         <a href="https://neo.obsidianos.xyz">
-                            Website programmed &amp; designed by
                             <img src="assets/neoapps.png" loading="lazy" />
                         </a>
                     </div>
