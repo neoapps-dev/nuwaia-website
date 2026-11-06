@@ -371,11 +371,19 @@
                 align-items: center;
                 margin-top: clamp(3rem, 7vw, 5rem);
             }
-            .how-row img {
+            .how-row img,
+            .how-row video {
                 width: 100%;
                 border-radius: var(--radius-lg);
                 object-fit: cover;
                 aspect-ratio: 4/3.2;
+            }
+            .how-row video {
+                aspect-ratio: 9/16;
+                max-width: 380px;
+                justify-self: center;
+                object-fit: cover;
+                background: var(--green-950);
             }
             .how-row h2 {
                 font-size: clamp(1.8rem, 3.8vw, 2.6rem);
@@ -861,6 +869,9 @@
                 .how-row img {
                     max-width: 520px;
                 }
+                .how-row video {
+                    max-width: 380px;
+                }
                 .foot-grid {
                     grid-template-columns: 1fr;
                 }
@@ -1120,7 +1131,12 @@
                 </div>
                 <div class="wrap">
                     <div class="how-row">
-                        <img src="assets/labjpg.jpg" />
+                        <video
+                            src="assets/vid1.mp4"
+                            controls
+                            playsinline
+                            preload="metadata"
+                        ></video>
                         <div>
                             <span>How We Work</span>
                             <h2>From research idea to market</h2>
